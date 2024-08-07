@@ -1,0 +1,71 @@
+class Personagem{
+  // construtor  
+  String nome;
+  int forca;
+  int ataque;
+ 
+ 
+  Personagem(this.nome, this.forca, this.ataque){
+     //print("Criei um objeto");
+     //print(this.nome);
+  }
+ 
+  void imprimirNome(){
+    print(this.nome);
+  }
+ 
+  void imprimirForca(){
+    print(this.forca);
+    if (this.forca==0){
+      print("Morreu...:(");
+    }
+  }
+ 
+  void recebeAtaque(int valorAtaque){
+    this.forca = this.forca - valorAtaque;
+  }
+ 
+  int retornaAtaque(){
+    return this.ataque;
+  }
+
+ 
+}
+//------------------------------------------------------
+void main() {
+  var spiderMan   =   Personagem('Spiderman',1000,200);
+  var duendeVerde =   Personagem('Duende Verde',800,100);
+  var maryJane    =   Personagem('Mary Jane',100,10);
+
+  print("---------------------");
+  spiderMan.imprimirNome();
+  print("---------------------");
+  spiderMan.imprimirForca();
+  print(spiderMan.retornaAtaque());
+ 
+ 
+  print("---------------------");
+  duendeVerde.imprimirNome();
+  print("---------------------");
+  duendeVerde.imprimirForca();
+  print(duendeVerde.retornaAtaque());
+ 
+  print("---------------------");
+  print("spiderman ataca duende verde...");
+  duendeVerde.recebeAtaque(spiderMan.retornaAtaque());
+  print("força do duende verde após ataque do spiderman...");
+  duendeVerde.imprimirForca();
+  print("---------------------");
+  maryJane.imprimirNome();
+  maryJane.imprimirForca();
+ 
+  maryJane.recebeAtaque(duendeVerde.retornaAtaque());
+  print("força da Mary Jane após ataque do Duende Verde...");
+  maryJane.imprimirForca();
+ 
+ 
+ 
+ 
+ 
+ 
+}
