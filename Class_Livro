@@ -1,57 +1,53 @@
-class Livro {
-  // Atributos
-
-  String titulo;
-
-  int ano;
-
-  double preco;
-
+class Livro{
+  // atributos
   String autor;
-
+  String titulo;
   String editora;
-
-  String genero;
-
-  double custo;
-
-  int copias;
-
-  // Construtor
-
-  Livro(this.titulo, this.ano, this.preco, this.autor, this.editora,
-      this.genero, this.custo, this.copias);
-
-  // Método
-
-  void exibir() {
-    print("Título: $titulo");
-
-    print("Ano: $ano");
-
-    print("Preço: R\$ ${preco.toStringAsFixed(2)}");
-
-    print("Autor: $autor");
-
-    print("Editora: $editora");
-
-    print("Gênero: $genero");
-
-    print("Custo: R\$ ${custo.toStringAsFixed(2)}");
-
-    print("Cópias Vendidas: $copias");
-  }
-
-  double lucro(){
+  double precoCusto;
+  double precoVenda;
+  double lucro;
+  int ano;
+  int edicao;
   
-    return (preco - custo) * copias;
+  // construtor
+  Livro(this.titulo, this.autor, this.editora, this.precoCusto,this.precoVenda, this.lucro, this.ano, this.edicao );
+  
+  // métodos específicos
+  void imprimirInfo(){
+    print("nome: $autor");
+    print("titulo: $titulo");
+    print("editora: $editora");
+    print("preço Custo: R\$${precoCusto.toStringAsFixed(2)}");
+    print("preço Venda: R\$${precoVenda.toStringAsFixed(2)}");
+    print("Lucro      : R\$${lucro.toStringAsFixed(0)}%");
+    print("Ano        : $ano");
+    print("Edição     : $edicao");
   }
+  
+  void imprimirAutorTitulo(){
+    print("nome: $autor");
+    print("titulo: $titulo");
+  }
+  
+  void calcularPrecoVenda(double lucro){
+    this.lucro = lucro;
+    precoVenda = precoCusto + precoCusto*(lucro/100);
+  }
+  
+  double imprimirPrecoVenda(){
+    return (precoVenda);
+  }
+  
+  
+}//fim da classe
 
 void main() {
-  Livro livro1 = Livro(
-      "Livro 001", 2000, 25.90, "fulano", "Editora 01", "Romance", 12.30, 1000);
-
-  livro1.exibir();
-
-}
+   Livro livro1 = Livro("Intr. Flutter","Maria","TI",100,75,50,2023,2);
+   livro1.imprimirInfo();
+   print("--------------------");
+   livro1.imprimirAutorTitulo();
+   print("--------------");
+   livro1.calcularPrecoVenda(75);
+   print(livro1.imprimirPrecoVenda());
+  
 }
