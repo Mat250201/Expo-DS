@@ -1,0 +1,69 @@
+class CalcSalario {
+  late double salarioBrt, salarioHora, horas, faltas, dias, salarioLiq;
+
+  void setSalarioBrt(double v) {
+    salarioBrt = v;
+  }
+
+  double getSalario() {
+    return salarioBrt;
+  }
+
+  void setHoras(double v) {
+    horas = v;
+  }
+
+  double getHoras() {
+    return horas;
+  }
+
+  void setFaltas(double v) {
+    faltas = v;
+  }
+
+  double getFaltas() {
+    return faltas;
+  }
+
+  void setDias(double v) {
+    dias = v;
+  }
+
+  double getDias() {
+    return dias;
+  }
+
+  void sum() {
+    salarioHora = salarioBrt / (horas * dias);
+  }
+
+  double getSalarioHora() {
+    return salarioHora;
+  }
+  
+  void calcLiquido() {
+    salarioLiq =(horas * (dias - faltas));
+  }
+
+  double getSalarioLiq() {
+    return salarioLiq;
+  }
+}
+
+void main() {
+  var c1 = CalcSalario();
+  c1.setSalarioBrt(1500);
+  c1.setHoras(8);
+  c1.setDias(30);
+  c1.setFaltas(5);
+  print('Salario Bruto: R\$ ${c1.getSalario()}');
+  print('Horas trabalhadas: ${c1.getHoras()}');
+  print('Dias de Trabalho: ${c1.getDias()}');
+  print('Faltas: ${c1.getFaltas()}');
+
+  print('___________________________');
+  c1.sum();
+  c1.calcLiquido();
+  print('Salário por hora: R\$${c1.getSalarioHora()}.');
+  print('Salário Liquido: R\$${c1.getSalarioLiq()}.');
+}
