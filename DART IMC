@@ -1,0 +1,35 @@
+void main() {
+  var calc = IMC();
+  calc.setAltura(1.73);
+  calc.setPeso(60);
+  calc.setImc();
+  print('CALCULO DO IMC:');
+
+  print(' ');
+
+  print('- Altura:  ${calc.getAltura()}m');
+
+  print('- Peso:  ${calc.getPeso()}kg');
+
+  print(' ');
+
+  print('IMC:  ${calc.getImc().toStringAsFixed(2)}');
+
+  print(' ');
+
+  if (calc.getImc() < 18.5) {
+    print('Abaixo do peso');
+  } else if (calc.getImc() > 16.9 && calc.getImc() <= 18.4) {
+    print('Peso saudável');
+  } else if (calc.getImc() > 18.4 && calc.getImc() <= 24.9) {
+    print('Acima do peso');
+  } else if (calc.getImc() > 24.9 && calc.getImc() <= 29.9) {
+    print('Acima do peso');
+  } else if (calc.getImc() > 29.9 && calc.getImc() <= 34.9) {
+    print('Acima do peso');
+  } else if (calc.getImc() > 34.9 && calc.getImc() <= 40) {
+    print('Acima do peso');
+  } else if (calc.getImc() > 40) {
+    print('Acima do peso');
+  }
+}
