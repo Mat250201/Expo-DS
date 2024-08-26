@@ -1,0 +1,108 @@
+class CorteMadeira {
+  late double altMP, compMP, areaMP, altA, compA, areaA, altB, compB, areaB;
+
+  late double pecas, sobra;
+
+  void setAltMP(double v) {
+    altMP = v;
+  }
+
+  double getAltMP() {
+    return altMP;
+  }
+
+  void setCompMP(double v) {
+    compMP = v;
+  }
+
+  double getCompMP() {
+    return compMP;
+  }
+
+  void setAltA(double v) {
+    altA = v;
+  }
+
+  double getAltA() {
+    return altA;
+  }
+
+  void setCompA(double v) {
+    compA = v;
+  }
+
+  double getCompA() {
+    return compA;
+  }
+
+  void setAltB(double v) {
+    altB = v;
+  }
+
+  double getAltB() {
+    return altMP;
+  }
+
+  void setCompB(double v) {
+    compB = v;
+  }
+
+  double getCompB() {
+    return compB;
+  }
+
+  void setAreaMP() {
+    areaMP = altMP * compMP;
+  }
+
+  double getAreaMP() {
+    return areaMP;
+  }
+
+  void setAreaA() {
+    areaA = altA * compA;
+  }
+
+  double getAreaA() {
+    return areaA;
+  }
+
+  void setPecas() {
+    pecas = areaMP / areaA;
+  }
+
+  double getPecas() {
+    return pecas;
+  }
+
+  void setSobra() {
+    sobra = areaMP % areaA;
+  }
+  
+  double getSobra() {
+    return sobra;
+  }
+}
+
+void main() {
+  var calc = CorteMadeira();
+  calc.setAltMP(50);
+  calc.setCompMP(50);
+  calc.setAreaMP();
+  print('${calc.getAreaMP()}');
+
+  calc.setAltA(3);
+  calc.setCompA(3);
+  calc.setAreaA();
+  print('${calc.getAreaA()}');
+
+  calc.setAreaMP();
+  calc.setAreaA();
+  calc.setPecas();
+  print('${calc.getPecas().toStringAsFixed(0)}');
+
+  calc.setAreaMP();
+  calc.setAreaA();
+  calc.setSobra();
+  print('${calc.getSobra()}');
+}
