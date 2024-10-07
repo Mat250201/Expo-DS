@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class Funcionario {
+  late String codigo;
+  late String nome;
+  late double salario;
+
+  void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
+
+  void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  void setSalario(double salario) {
+    this.salario = salario;
+  }
+
+  String getCodigo() {
+    return codigo;
+  }
+
+  String getNome() {
+    return nome;
+  }
+
+  double getSalario() {
+    return salario;
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Cadastro de Funcionário',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: FuncionarioScreen(),
+    );
+  }
+}
+
+class FuncionarioScreen extends StatefulWidget {
+  @override
+  _FuncionarioScreenState createState() => _FuncionarioScreenState();
+}
+
+class _FuncionarioScreenState extends State<FuncionarioScreen> {
+  final _codigoController = TextEditingController();
+  final _nomeController = TextEditingController();
+  final _salarioController = TextEditingController();
+
+  Funcionario _funcionario = Funcionario();
+  String _informacoesFuncionario = '';
+
+  void _salvarFuncionario() {
+    setState(() {
+      _funcionario.setCodigo(_codigoController.text);
+      _funcionario.setNome(_nomeController.text);
+      _funcionario.setSalario(double.tryParse(_salarioController.text) ?? 0);
+
+      _informacoesFuncionario = 'Código: ${_funcionario.getCodigo()}\n'
+          'Nome: ${_funcionario.getNome()}\n'
+          'Salário: ${_funcionario.getSalario().toStringAsFixed(2)}';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cadastro de Funcionário'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _codigoController,
+              decoration: InputDecoration(labelText: 'Código'),
+            ),
+            TextField(
+              controller: _nomeController,
+              decoration: InputDecoration(labelText: 'Nome'),
+            ),
+            TextField(
+              controller: _salarioController,
+              decoration: InputDecoration(labelText: 'Salário'),
+              keyboardType: TextInputType.number,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _salvarFuncionario,
+              child: Text('Salvar Funcionário'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              _informacoesFuncionario,
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
